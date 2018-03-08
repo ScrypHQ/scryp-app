@@ -38,11 +38,6 @@ http://nvie.com/posts/a-successful-git-branching-model/
 
 # For more information:
 
-Gopi Kotaru
-Chief Technical Officer
-gopi@scryp.io
+Gopi Kotaru | Chief Technical Officer | Blockchain Adviser | gopi@scryp.io
 
-Tyler Tracy
-Co-Founder,
-Blockchain Architect
-tyler@scryp.io
+Tyler Tracy | Co-Founder | Blockchain Architect | tyler@scryp.io
