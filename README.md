@@ -10,6 +10,14 @@ This repository holds the primary codebase for Scryp application development.
 
 Visual Studio, Cloud9
 
+# Commands to run
+
+
+npm install
+    
+ionic cordova build android
+
+
 # Test environment:
 
 Smart contracts have been tested on ethereumjs-testrpc using
