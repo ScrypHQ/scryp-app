@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Payment Status</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+    <ion-grid>
+      <ion-row class="balance-amount" text-center>
+        <ion-col col-12>Done</ion-col>
+      </ion-row>
+      <ion-row class="balance-title" text-center>
+          <ion-col col-12><b>$c10.00</b></ion-col>
+      </ion-row>
+      <ion-row class="balance-title" text-center>
+          <ion-col col-12>Has been debited from your wallet</ion-col>
+      </ion-row>
+      <ion-col col-12>
+          <button ion-button (click)='goToHomePage()'>Home</button>
+      </ion-col>
+    </ion-grid>
+  </ion-content>
+  
