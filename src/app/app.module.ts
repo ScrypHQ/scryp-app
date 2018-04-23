@@ -7,31 +7,33 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { SignupComponent } from '../pages/account/signup.component';
 import { HomeComponent } from '../pages/home/home.component';
 import { PaymentReviewComponent } from '../pages/payment/payment-review/payment-review.component';
 import { PaymentService } from '../pages/payment/payment.service';
 import { QRScanService } from '../pages/payment/qr-scan/qr-scan.service';
 import { ApplicationUiService } from '../pages/core/application-ui.service';
 import { PaymentConfirmationComponent } from '../pages/payment/payment-confirmation/payment-confirmation.component';
+import { AccountHomeComponent } from '../pages/account/home/account-home.component';
+import { AccountModule } from '../pages/account/account.module';
+import { DealsModule } from '../pages/deals/deals.module';
 
 @NgModule({
   declarations: [
     MyApp,
     HomeComponent,
-    SignupComponent,
     PaymentReviewComponent,
     PaymentConfirmationComponent
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AccountModule,
+    DealsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomeComponent,
-    SignupComponent,
     PaymentReviewComponent,
     PaymentConfirmationComponent
   ],

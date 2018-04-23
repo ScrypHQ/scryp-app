@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Recovery Phrase - 2</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header class="card-title">Please enter your 12 word recovery phrase: </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label color="primary" floating>Recovery Word</ion-label>
+        <ion-input type="text" [(ngModel)]="recoveryWord"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <button ion-button full>Continue <ion-icon ios="ios-arrow-round-forward" md="md-arrow-round-forward"></ion-icon></button>
+</ion-content>

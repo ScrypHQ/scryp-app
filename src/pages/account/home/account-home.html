@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Scryp Pre-Alpha</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row class="balance-title" text-center>
+      <ion-col col-12>Welcome to Scryp</ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <button ion-button block (click) = 'createAccount()'>Create My Account</button>
+    </ion-row>
+	<ion-row text-center>
+      Already have an account?
+    </ion-row>
+	<ion-row text-center>
+      <button ion-button block (click) = 'restoreAccount()'>Restore My Account</button>
+    </ion-row>
+  </ion-grid>
+</ion-content>
