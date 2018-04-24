@@ -47,7 +47,8 @@
   "cordova": {
     "plugins": {
       "phonegap-plugin-barcodescanner": {
-        "CAMERA_USAGE_DESCRIPTION": "SelectAccount Mobile uses camera"
+        "CAMERA_USAGE_DESCRIPTION": "Scryp Mobile uses camera",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},

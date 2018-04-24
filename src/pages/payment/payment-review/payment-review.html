@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Payment Review</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12>
+                <b>Recipient Name:</b> <br/> Test Manne
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <b>Deal Name:</b> <br/> Test Deal
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <b>Item Name:</b> <br/> Test Name
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <b>Total:</b> <br/> $100
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <b>Scryp Price:</b> <br/> $10
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <b>Wallet Address:</b> <br/> {{paymentInfo.walletAddress}}
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12>
+                <button ion-button (click)='onPaymentCancel()'>Cancel</button>
+                <button ion-button (click)='submitPayment()'>Pay</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
