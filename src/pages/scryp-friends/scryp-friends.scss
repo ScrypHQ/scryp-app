@@ -1,0 +1,10 @@
+page-scryp-friends {
+  .label-text {
+    margin: 35% 5%;
+    color: color($colors, secondary);
+    &.soon {
+      font-size: 9.6rem;
+      margin-top: 10%;
+    }
+  }
+}

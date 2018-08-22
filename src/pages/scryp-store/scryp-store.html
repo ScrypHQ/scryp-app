@@ -1,0 +1,36 @@
+<ion-content padding class="scryp-store-content">
+  <div class="menu-close-button">
+    <ion-icon ios="ios-close" md="md-close" (click)="closeMenu()"></ion-icon>
+  </div>
+  <div >
+    <img src="assets/imgs/scryp-images/Asset 7l.png" class="scryp-images" width="100%">
+  </div>
+  <ion-grid>
+    <ion-row class="header-label text">
+      <ion-col col-5>Five Watt Coffee</ion-col>
+      <ion-col col-2><img class="offers-logo-align" src="assets/imgs/scryp-images/Offers_Logo.png" alt="Volunteer_Icon"></ion-col>
+      <ion-col col-5 style="direction: rtl;">NE Minneapolis</ion-col>
+    </ion-row>
+    <ion-row class="label-content-text">
+      <ion-col col-12>
+        <p class="label-text">This specialty coffee is available between the dates of 8.29 - 9.13.2018</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="label-content-text">
+      <ion-col col-12 style="margin-top: 10%">
+        <p class="label-text">Regular Price: $5</p>
+        <p class="label-text offerPrice">Offer: {{5 - 2.5 | currency}} + <span>SCRYP 2.5</span></p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-fab right class="fab-button-text scryp-icon">
+        <img ion-fab  src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images" width="15%">
+        <ion-fab-list side="left">
+          <button ion-fab color="dark">Earn</button>
+          <button ion-fab class="spend-wallet">Spend</button>
+          <button ion-fab color="secondary">Send</button>
+        </ion-fab-list>
+      </ion-fab>
+    </ion-row>
+  </ion-grid>
+</ion-content>

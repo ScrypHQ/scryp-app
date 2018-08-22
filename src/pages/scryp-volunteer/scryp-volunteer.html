@@ -1,0 +1,34 @@
+<ion-content padding>
+  <div id="volunteer-map" style="width:100%; height:50%;"></div>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col col-8 class="search-bar-align">
+        <ion-searchbar (ionInput)="filterItems($event)"></ion-searchbar>
+      </ion-col>
+      <ion-col col-4 class="search-bar-align">
+        <img style="position: absolute; width: 50%;margin-left: 50%;margin-top: -30%;" src="assets/imgs/scryp-images/Volunteer_Icon.png" alt="Volunteer_Icon">
+      </ion-col>
+    </ion-row>
+    <ion-row class="header-label text">Balance(volunteer)</ion-row>
+    <ion-row class="header-label balance"><img src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images" width="18%">{{walletBalance}}</ion-row>
+    <ion-row class="label-content-text volunteer-text">
+      <ion-col col-12>
+        <p class="label-text volunteer"><span>-</span>Surly Gives a Damn 09-13-18</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="label-content-text volunteer-text">
+      <ion-col col-12>
+        <p class="label-text volunteer"><span>-</span>Open Arms 08-29-19</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-fab left bottom edge  class="goto-menu-icon">
+        <img ion-fab  src="assets/imgs/scryp-images/Artwork 18.png" width="50%" (click)="goToOffers()">
+      </ion-fab>
+      <ion-fab right bottom edge class="settings-button-icon">
+        <img ion-fab  src="assets/imgs/scryp-images/SettingsGear.png" width="50%" (click)="goToSettings()">
+      </ion-fab>
+    </ion-row>
+  </ion-grid>
+</ion-content>

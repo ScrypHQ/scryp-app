@@ -1,0 +1,87 @@
+.scryp-store-content {
+  .label-content-text{
+    font-size: 20px;
+    height: 40px;
+    .label-text {
+      color: color($colors, dark);
+      float: none;
+      font-size: 23px;
+      text-align: center;
+      span {
+        color: color($colors, secondary);
+      }
+      &.offerPrice {
+        color: color($colors, primary)!important;
+      }
+    }
+    .value-text {
+      color: color($colors, light);
+      float: right;
+    }
+    &.volunteer-text {
+      padding: 10%;
+    }
+  }
+  .header-label {
+    font-size: 30px;
+    &.text {
+      color: color($colors, primary);
+      font-size: 20px;
+    }
+    &.balance {
+      color: color($colors, light);
+    }
+  }
+  .fab-button-text {
+    ion-fab[right] {
+      top: 80%;
+      right: 40px;
+    }
+    .button-inner {
+      font-size: 25px;
+    }
+    ion-fab-list[side=left] .fab-in-list, ion-fab-list[side=right] .fab-in-list {
+      height: 60px;
+      width: 60px;
+    }
+    .spend-wallet {
+      background: linear-gradient(to right, color($colors, orange), color($colors, darkOrange));
+    }
+    &.scryp-icon {
+      top: 80%;
+      right: 46px;
+      .scryp-images {
+        background: color($colors, light);
+      }
+    }
+  }
+  .fab-md-light {
+    background-color: transparent !important;
+    right: -20px;
+  }
+  .left-fab {
+    .fab-md-light {
+      left: -23px;
+      bottom: 9px !important;
+    }
+  }
+  .scroll-content {
+    overflow: hidden;
+    background: color($colors, light) !important;
+  }
+  .item-md {
+    background: transparent !important;
+    height: auto;
+  }
+  .item-md.item-block .item-inner{
+    border: none;
+  }
+}
+.offers-logo-align {
+  background: #fff;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  position: absolute;
+  width: 100%;
+  margin-top: -90%;
+}

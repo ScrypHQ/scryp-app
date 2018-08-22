@@ -1,0 +1,7 @@
+{
+  "name": "scryp-mobile-mvp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

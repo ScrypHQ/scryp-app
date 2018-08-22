@@ -1,0 +1,22 @@
+page-scryp-wallet {
+  .label-content-text{
+    font-size: 20px;
+    height: 40px;
+    .label-text {
+      color: color($colors, secondary);
+      float: right;
+    }
+    .balance-label {
+      color: color($colors, light);
+      float: left;
+    }
+  }
+  .goto-menu-icon {
+      left: -15px;
+      bottom: -15px !important;
+  }
+  .settings-button-icon {
+    right: -20px;
+  }
+
+}

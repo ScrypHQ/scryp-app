@@ -1,0 +1,25 @@
+page-scryp-volunteer-location {
+
+    .label-content-text{
+      font-size: 20px;
+      height: 40px;
+      .label-text {
+        color: color($colors, dark);
+        float: right;
+        span {
+          color: color($colors, secondary);
+        }
+        &.offerPrice {
+          color: color($colors, primary)!important;
+        }
+      }
+    }
+  }
+  .volunteer-logo-align {
+    background: #fff;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    position: absolute;
+    width: 100%;
+    margin-top: -90%;
+  }

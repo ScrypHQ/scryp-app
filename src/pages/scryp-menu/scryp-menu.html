@@ -1,0 +1,16 @@
+
+<ion-content padding>
+  <div class="menu-close-button">
+    <ion-icon ios="ios-close" md="md-close" (click)="closeMenu()"></ion-icon>
+  </div>
+  <div class="scryp-menu-content">
+    <img src="assets/imgs/scryp-images/Logo.png" alt="your image">
+    <img class="logo-png-image" src="assets/imgs/scryp-images/LogoRing.png" alt="LogoRing">
+  </div>
+  <div class="block-of-button">
+    <button ion-button block class="block-of-button wallet" (click)="goToWallet()">Wallet</button>
+    <button ion-button block class="block-of-button volunteer" (click)="goToVolunteer()">Volunteer</button>
+    <button ion-button block class="block-of-button offers" (click)="goToOffers()">Offers</button>
+    <button ion-button block class="block-of-button friends" (click)="goToFriend()">Friends</button>
+  </div>
+</ion-content>

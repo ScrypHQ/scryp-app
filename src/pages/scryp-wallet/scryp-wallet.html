@@ -1,0 +1,49 @@
+<ion-content padding>
+  <div id="wallet-map" style="width:100%; height:50%;"></div>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-8 class="search-bar-align">
+        <div class="header-label text">Balance</div>
+      </ion-col>
+      <ion-col col-4 class="search-bar-align">
+        <img style="position: absolute; width: 50%;margin-left: 50%;margin-top: -30%;" src="assets/imgs/scryp-images/Wallet_Icon.png" alt="Volunteer_Icon">
+      </ion-col>
+    </ion-row>
+    <ion-row class="header-label balance"><img src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images" width="13%">941</ion-row>
+    <ion-row class="label-content-text">
+      <ion-col col-9>
+        <p class="label-text">Total Scryp Earned <img src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images" width="15%" align="right"></p>
+      </ion-col>
+      <ion-col col-3>
+        <p class="balance-label">$1294.10</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="label-content-text">
+      <ion-col col-9>
+        <p class="label-text">Total Used Saved</p>
+      </ion-col>
+      <ion-col col-3>
+        <p class="balance-label">$1029.71</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-fab right class="fab-button-text scryp-icon">
+        <img ion-fab  src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images" width="15%">
+        <ion-fab-list side="left">
+          <button ion-fab color="dark">Earn</button>
+          <button ion-fab class="spend-wallet">Spend</button>
+          <button ion-fab color="secondary">Send</button>
+        </ion-fab-list>
+      </ion-fab>
+    </ion-row>
+    <ion-row>
+      <ion-fab left bottom edge  class="goto-menu-icon">
+        <img ion-fab  src="assets/imgs/scryp-images/Artwork 18.png" width="50%" (click)="goToVolunteer()">
+      </ion-fab>
+      <ion-fab right bottom edge class="settings-button-icon">
+        <img ion-fab  src="assets/imgs/scryp-images/SettingsGear.png" width="50%" (click)="goToSettings()">
+      </ion-fab>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

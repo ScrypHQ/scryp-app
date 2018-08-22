@@ -1,0 +1,33 @@
+page-scryp-menu {
+  .scryp-menu-content {
+    margin: auto;
+    width: 50%;
+    margin-top: 4%;
+  }
+  .block-of-button {
+    .button-block-md, .button-block-ios {
+      height: 6rem;
+      margin: 7%;
+      width: 85%;
+      color: color($colors, primary);
+    }
+    &.wallet{
+      background: color($colors, dark);
+    }
+    &.volunteer{
+      background: linear-gradient(to right, color($colors, orange), color($colors, darkOrange));
+    }
+    &.offers{
+      background: color($colors, light);
+    }
+    &.friends{
+      background: color($colors, secondary);
+    }
+  }
+  .logo-png-image {
+    position: absolute;
+    width: 53%;
+    margin-top: -67%;
+    margin-left: -2%;
+  }
+}

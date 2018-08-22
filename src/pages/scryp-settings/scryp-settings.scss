@@ -1,0 +1,53 @@
+page-scryp-settings {
+  .scryp-menu-content {
+    margin: auto;
+    width: 30%;
+    text-align: center;
+  }
+  .block-of-button {
+    .button-block-md, .button-block-ios {
+      height: 6rem;
+      margin: 7%;
+      width: 85%;
+      color: color($colors, light);
+    }
+    &.wallet{
+      background: color($colors, dark);
+    }
+    &.volunteer{
+      background: linear-gradient(to right, color($colors, orange), color($colors, darkOrange));
+    }
+    &.offers{
+      background: color($colors, light);
+    }
+    &.friends{
+      background: color($colors, secondary);
+    }
+  }
+  .label-text {
+    color: color($colors, secondary);
+  }
+  .toolbar-background-md, .toolbar-background-ios {
+    border-bottom: none !important;
+  }
+  .toolbar-content-md {
+    border: 1px solid color($colors, orange) !important;
+  }
+  .segment-md .segment-button, .segment-ios .segment-button {
+    border: 1px solid color($colors, orange) !important;
+    color: color($colors, light);
+  }
+  .segment-md .segment-button.activated, .segment-ios .segment-button.activated,.segment-md .segment-button.segment-activated, .segment-ios .segment-button.segment-activated {
+    border: none;
+    background: linear-gradient(to right, color($colors, orange), color($colors, darkOrange));
+  }
+  .toolbar-md,  .toolbar-ios {
+    padding: 10%;
+  }
+  .toolbar-ios {
+    margin: 12% 0%;
+  }
+  .button-outline-md-secondary {
+    color: color($colors, orange) !important;
+  }
+}

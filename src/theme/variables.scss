@@ -1,0 +1,167 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  secondary:  #32c7db,
+  light:      #fffeff,
+  dark:       #a4a2a6,
+  primary:     #122d49,
+  orange:     #ffb636,
+  darkOrange: #FF5335,
+);
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+.scroll-content {
+  background: color($colors, primary) !important;
+  padding: 0px !important;
+  overflow: hidden;
+}
+
+.create-account {
+  text-align: center;
+}
+
+.button-outline-md-secondary {
+  border-color: color($colors, light);
+  color: color($colors, light);
+}
+
+.toolbar-background-md {
+  background: color($colors, primary)  !important;
+  border-bottom: 1px solid color($colors, light)  !important;
+}
+
+.menu-close-button {
+  color: color($colors, light);
+  font-size: 35px;
+  float: right;
+  position: absolute;
+  margin-left: 90%;
+}
+
+.main-menu-logo {
+  position: absolute;
+  width: 12%;
+  margin-left: 86%;
+  margin-top: 2%;
+}
+
+@font-face {
+  font-family: 'Lunatix Light';
+  src: url('/src/assets/fonts/Lunatix Light Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// .button-inner {
+//   font-family: 'Lunatix Light' !important;
+//   font-size: 20px;
+// }
+
+.search-bar-align{
+  z-index: 1000;;
+  padding: 0px !important;
+  .searchbar-md {
+    padding: 0px;
+  }
+  .searchbar-md .searchbar-input {
+    padding-right: 15%;
+    padding-left: 15%;
+  }
+  .searchbar-md .searchbar-search-icon {
+    left: 0;
+  }
+}
+
+.goto-menu-icon {
+  left: -15px;
+  bottom: -15px !important;
+}
+.settings-button-icon {
+  right: -20px;
+}
+
+.header-label {
+  font-size: 30px;
+  &.text {
+    color: color($colors, secondary);
+  }
+  &.balance {
+    color: color($colors, light);
+  }
+}
