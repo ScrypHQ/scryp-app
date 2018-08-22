@@ -21,6 +21,7 @@ import { LoginPage } from '../pages/login/login';
 import { StorageService } from '../service/storage.service';
 import { RecoverPage } from '../pages/recover/recover';
 import { ClipboardModule } from 'ngx-clipboard';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { ClipboardModule } from 'ngx-clipboard';
     OffersService,
     Web3Service,
     StorageService,
+    BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

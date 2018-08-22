@@ -24,6 +24,7 @@ import '../../../node_modules/leaflet-plugins/layer/tile/Bing.js';
 export class ScrypOffersPage {
   map: any;
   BING_KEY = 'At2CX0GyCF3uTS87fnCP_ueLztJa_FruD4mq9iS4peRAb5eVNWOrxyIz7p3kZJtC';
+  offers: any;
   public offersIcon: any = new L.icon({
     iconUrl: 'assets/imgs/scryp-images/offer_marker.png',
     iconAnchor: [10, 10]
@@ -46,41 +47,52 @@ export class ScrypOffersPage {
   }
 
   goToMenu() {
-    this.resetMaps();
-    this.navCtrl.push(ScrypMenuPage)
-  }
-
-  goToSettings() {
-    this.resetMaps();
-    this.navCtrl.push(ScrypSettingsPage)
-  }
-
-  goToWallet() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypWalletPage)
-  }
-
-  goToVolunteerLocation() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypVolunteerLocationPage)
-  }
-
-  goToStore() {
-    this.resetMaps();
-    this.navCtrl.push(ScrypStorePage)
-  }
-
-  getOffersData() {
-    const offers = this.offersService.GetOffersData();
-    offers.forEach(o => {
-      var marker = new L.Marker(new L.LatLng(o.location.latitude, o.location.longitude), { icon: this.offersIcon, alt: o.id });
-      marker.options.alt = o.id;
-      this.map.addLayer(marker);
-      marker.on('click', (e) => { console.log('loaded' + o.id) });
+    this.navCtrl.push(ScrypMenuPage, {
+      pageObject: this,
+      callback: this.mapCallback
     });
   }
 
-  resetMaps() {
-    document.getElementById('offer-map').innerHTML = "<div id='offer-map' style='width:100%; height:50%;'></div>";
+  goToSettings() {
+    this.navCtrl.push(ScrypSettingsPage, {
+      pageObject: this,
+      callback: this.mapCallback
+    });
+  }
+
+  goToWallet() {
+    this.navCtrl.setRoot(ScrypWalletPage);
+  }
+
+  goToStore(offer) {
+    this.navCtrl.push(ScrypStorePage, {
+      pageObject: this,
+      callback: this.mapCallback,
+      offer: offer
+    });
+  }
+
+  filterItems(event) {
+    this.offers = this.offersService.GetOffersData();
+    this.offers = this.offers.filter(item => {
+      return item.title.toLowerCase().includes(event.target.value.toLowerCase());
+    })
+  }
+
+  getOffersData() {
+    this.offers = this.offersService.GetOffersData();
+    this.offers.forEach(o => {
+      var marker = new L.Marker(new L.LatLng(o.location.latitude, o.location.longitude), { icon: this.offersIcon, alt: o.id });
+      marker.options.alt = o.id;
+      this.map.addLayer(marker);
+      marker.on('click', (e) => { this.goToStore(o) });
+    });
+  }
+
+  mapCallback(mapPageObject) {
+    return new Promise((resolve, reject) => {
+      this.map = mapPageObject.map;
+      resolve();
+    });
   }
 }

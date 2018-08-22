@@ -10,6 +10,8 @@ page-scryp-menu {
       margin: 7%;
       width: 85%;
       color: color($colors, primary);
+      font-family: 'Lunatix Light';
+      font-size: 20px;
     }
     &.wallet{
       background: color($colors, dark);

@@ -2,8 +2,8 @@ page-recover {
   .recovery-div {
     text-align: center;
     width: 100%;
-    height: 280px;
-    margin-top: 30%;
+    height: 200px;
+    margin-top: 5%;
   }
   
   .mnemonic-phrase {
@@ -18,5 +18,9 @@ page-recover {
 
   .toolbar-title-md {
     color: #fffeff !important;
+  }
+
+  .recover-scryp-header {
+    margin: 5% 15% 5% 15%;
   }
 }

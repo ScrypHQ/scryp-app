@@ -4,7 +4,7 @@
 page-user {
   .logo {
     padding: 20px 0;
-    min-height: 200px;
+    min-height: 180px;
     text-align: center;
 
     img {
@@ -19,7 +19,7 @@ page-user {
 
 .login-page {
   .login-page-content {
-    margin: 15% 15% 5% 15%;
+    margin: 5% 15% 5% 15%;
   }
   .create-account {
     text-align: center;
@@ -31,6 +31,7 @@ page-user {
 }
 .button-scryp {
   font-family: Tw Cen MT, monospace;
-  font-size: 30px;
+  font-size: 26px;
   padding: 20px;
+  margin-bottom: 10px;
 }

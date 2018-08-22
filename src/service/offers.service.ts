@@ -8,7 +8,7 @@ export class OffersService {
       "title": "Scryp high-five watt offer",
       "validity": "2018-12-31T00:00:00",
       "offeredBy": "Five Watt Coffee",
-      "description": "This specialty coffee is available between the dates Sep 1 - Dec 31, 2018",
+      "description": "This specialty coffee is available between the dates Sep 1 - Dec 31, 2018.",
       "location": {
         "latitude": 44.9344655,
         "longitude": -93.2799638

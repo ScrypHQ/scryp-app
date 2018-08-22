@@ -10,6 +10,8 @@ page-scryp-settings {
       margin: 7%;
       width: 85%;
       color: color($colors, light);
+      padding-left: 10%;
+      padding-right: 10%;
     }
     &.wallet{
       background: color($colors, dark);
@@ -25,7 +27,16 @@ page-scryp-settings {
     }
   }
   .label-text {
+    color: color($colors, light);
+    font-size: 26px;
+  }
+
+  .label-sub-text {
+    font-family: monospace;
     color: color($colors, secondary);
+    float: left;
+    font-size: 26px;
+    padding-left: 8%;
   }
   .toolbar-background-md, .toolbar-background-ios {
     border-bottom: none !important;
@@ -41,13 +52,28 @@ page-scryp-settings {
     border: none;
     background: linear-gradient(to right, color($colors, orange), color($colors, darkOrange));
   }
-  .toolbar-md,  .toolbar-ios {
-    padding: 10%;
+  .toolbar-md, .toolbar-ios {
+    padding-left: 8%;
+    padding-right: 8%;
+    font-family: 'Lunatix Light';
   }
   .toolbar-ios {
     margin: 12% 0%;
   }
+
+  .segment-ios {
+    background: #122d49 !important;
+  }
+
   .button-outline-md-secondary {
     color: color($colors, orange) !important;
+  }
+
+  .label-content-text {
+    width: 100%;
+  }
+
+  .lunatix-font {
+    font-family: 'Lunatix Light';
   }
 }

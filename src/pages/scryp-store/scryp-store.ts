@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { BarcodeScanner } from '../../../node_modules/@ionic-native/barcode-scanner';
 
 /**
  * Generated class for the ScrypStorePage page.
@@ -15,13 +16,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ScrypStorePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  mapPageObject: any;
+  callback: any;
+  offer: any;
+  scrypActions = false;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private scanner: BarcodeScanner) {
+    this.mapPageObject = this.navParams.get('pageObject');
+    this.callback = this.navParams.get('callback');
+    this.offer = this.navParams.get('offer');
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScrypStorePage');
   }
   closeMenu() {
-    this.navCtrl.pop()
+    this.callback(this.mapPageObject).then(()=>{ this.navCtrl.pop() });
+  }
+
+  toggleScrypActions() {
+    this.scrypActions = !this.scrypActions;
+  }
+
+  async spendScryp() {
+    const info = await this.scanner.scan();
+    // scryp spend logic goes here
+    console.log(info);
+    alert(info.text);
   }
 }

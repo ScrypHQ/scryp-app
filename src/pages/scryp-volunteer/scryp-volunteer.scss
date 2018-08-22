@@ -6,5 +6,9 @@ page-scryp-volunteer {
   .settings-button-icon {
     right: -20px;
   }
-
+  .volunteer {
+    color: color($colors, light);
+    padding-left: 7%;
+    padding-right: 5%;
+  }
 }

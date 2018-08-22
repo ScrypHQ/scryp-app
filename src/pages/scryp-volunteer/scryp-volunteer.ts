@@ -24,6 +24,7 @@ import '../../../node_modules/leaflet-plugins/layer/tile/Bing.js';
 export class ScrypVolunteerPage {
   map: any;
   BING_KEY = 'At2CX0GyCF3uTS87fnCP_ueLztJa_FruD4mq9iS4peRAb5eVNWOrxyIz7p3kZJtC';
+  volunteers: any;
   public volunteerIcon: any = new L.icon({
     iconUrl: 'assets/imgs/scryp-images/volunteer_marker.png',
     iconAnchor: [10, 10]
@@ -45,45 +46,52 @@ export class ScrypVolunteerPage {
   }
 
   goToMenu() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypMenuPage)
-  }
-
-  goToSettings() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypSettingsPage)
-  }
-
-  goToOffers() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypOffersPage)
-  }
-
-  goToVolunteerLocation() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypVolunteerLocationPage)
-  }
-
-  goToStore() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypStorePage)
-  }
-
-  filterItems(event) {
-    console.log(event)
-  }
-
-  getVolunteerData() {
-    const volunteers = this.volunteerService.GetVolunteerData();
-    volunteers.forEach(v => {
-      var marker = new L.Marker(new L.LatLng(v.location.latitude, v.location.longitude), { icon: this.volunteerIcon, alt: v.id });
-      marker.options.alt = v.id;
-      this.map.addLayer(marker);
-      marker.on('click', (e) => { console.log('loaded' + v.id) });
+    this.navCtrl.push(ScrypMenuPage, {
+      pageObject: this,
+      callback: this.mapCallback
     });
   }
 
-  resetMaps() {
-    document.getElementById('volunteer-map').innerHTML = "<div id='volunteer-map' style='width:100%; height:50%;'></div>";
+  goToSettings() {
+    this.navCtrl.push(ScrypSettingsPage, {
+      pageObject: this,
+      callback: this.mapCallback
+    });
+  }
+
+  goToOffers() {
+    this.navCtrl.setRoot(ScrypOffersPage);
+  }
+
+  goToVolunteerLocation(volunteerSite) {
+    this.navCtrl.push(ScrypVolunteerLocationPage, {
+      pageObject: this,
+      callback: this.mapCallback,
+      volunteerSite: volunteerSite
+    });
+  }
+
+  filterItems(event) {
+    this.volunteers = this.volunteerService.GetVolunteerData();
+    this.volunteers = this.volunteers.filter(item => {
+      return item.title.toLowerCase().includes(event.target.value.toLowerCase());
+    })
+  }
+
+  getVolunteerData() {
+    this.volunteers = this.volunteerService.GetVolunteerData();
+    this.volunteers.forEach(v => {
+      var marker = new L.Marker(new L.LatLng(v.location.latitude, v.location.longitude), { icon: this.volunteerIcon, alt: v.id });
+      marker.options.alt = v.id;
+      this.map.addLayer(marker);
+      marker.on('click', (e) => { this.goToVolunteerLocation(v) });
+    });
+  }
+
+  mapCallback(mapPageObject) {
+    return new Promise((resolve, reject) => {
+      this.map = mapPageObject.map;
+      resolve();
+    });
   }
 }

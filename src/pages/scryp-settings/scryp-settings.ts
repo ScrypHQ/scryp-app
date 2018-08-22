@@ -14,15 +14,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'scryp-settings.html',
 })
 export class ScrypSettingsPage {
-
+  mapPageObject: any;
+  callback: any;
+  pushNotication: true;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.mapPageObject = this.navParams.get('pageObject');
+    this.callback = this.navParams.get('callback');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScrypSettingsPage');
   }
+  
   closeMenu() {
-    this.navCtrl.pop()
+    this.callback(this.mapPageObject).then(()=>{ this.navCtrl.pop() });
   }
 
 }

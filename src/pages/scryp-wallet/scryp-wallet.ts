@@ -11,6 +11,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { VolunteerWorkService } from '../../service/volunteer-work.service';
 import { OffersService } from '../../service/offers.service';
 import { Web3Service } from '../../service/web3.service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 /**
  * Generated class for the ScrypWalletPage page.
@@ -37,7 +38,8 @@ export class ScrypWalletPage {
     iconAnchor: [10, 10]
   });
   constructor(public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation,
-    private volunteerService: VolunteerWorkService, private offersService: OffersService, private web3Service: Web3Service) {
+    private volunteerService: VolunteerWorkService, private offersService: OffersService, private web3Service: Web3Service,
+    private scanner: BarcodeScanner) {
   }
 
   async ionViewDidLoad() {
@@ -55,29 +57,38 @@ export class ScrypWalletPage {
   }
 
   goToMenu() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypMenuPage)
+    this.navCtrl.push(ScrypMenuPage, {
+      pageObject: this,
+      callback: this.mapCallback
+    });
   }
 
   goToSettings() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypSettingsPage)
+    this.navCtrl.push(ScrypSettingsPage, {
+      pageObject: this,
+      callback: this.mapCallback
+    });
   }
 
   goToVolunteer() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypVolunteerPage)
+    this.navCtrl.setRoot(ScrypVolunteerPage);
   }
 
 
-  goToStore() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypStorePage)
+  goToStore(offer) {
+    this.navCtrl.push(ScrypStorePage, {
+      pageObject: this,
+      callback: this.mapCallback,
+      offer: offer
+    });
   }
 
-  goToVolunteerLocation() {
-    this.resetMaps();
-    this.navCtrl.setRoot(ScrypVolunteerLocationPage)
+  goToVolunteerLocation(volunteerSite) {
+    this.navCtrl.push(ScrypVolunteerLocationPage, {
+      pageObject: this,
+      callback: this.mapCallback,
+      volunteerSite: volunteerSite
+    });
   }
 
   getVolunteerData() {
@@ -86,7 +97,7 @@ export class ScrypWalletPage {
       var marker = new L.Marker(new L.LatLng(v.location.latitude, v.location.longitude), { icon: this.volunteerIcon, alt: v.id });
       marker.options.alt = v.id;
       this.map.addLayer(marker);
-      marker.on('click', (e) => { console.log('loaded' + v.id) });
+      marker.on('click', (e) => { this.goToVolunteerLocation(v) });
     });
   }
 
@@ -96,11 +107,28 @@ export class ScrypWalletPage {
       var marker = new L.Marker(new L.LatLng(o.location.latitude, o.location.longitude), { icon: this.offersIcon, alt: o.id });
       marker.options.alt = o.id;
       this.map.addLayer(marker);
-      marker.on('click', (e) => { console.log('loaded' + o.id) });
+      marker.on('click', (e) => { this.goToStore(o) });
     });
   }
 
-  resetMaps() {
-    document.getElementById('wallet-map').innerHTML = "<div id='wallet-map' style='width:100%; height:50%;'></div>";
+  mapCallback(mapPageObject) {
+    return new Promise((resolve, reject) => {
+      this.map = mapPageObject.map;
+      resolve();
+    });
+  }
+
+  async addScryp() {
+    const info = await this.scanner.scan();
+    // scryp add logic goes here
+    console.log(info);
+    alert(info.text);
+  }
+
+  async spendScryp() {
+    const info = await this.scanner.scan();
+    // scryp spend logic goes here
+    console.log(info);
+    alert(info.text);
   }
 }

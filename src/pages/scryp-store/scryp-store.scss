@@ -1,7 +1,6 @@
 .scryp-store-content {
   .label-content-text{
     font-size: 20px;
-    height: 40px;
     .label-text {
       color: color($colors, dark);
       float: none;
@@ -38,7 +37,7 @@
       right: 40px;
     }
     .button-inner {
-      font-size: 25px;
+      font-size: 16px;
     }
     ion-fab-list[side=left] .fab-in-list, ion-fab-list[side=right] .fab-in-list {
       height: 60px;
@@ -49,7 +48,6 @@
     }
     &.scryp-icon {
       top: 80%;
-      right: 46px;
       .scryp-images {
         background: color($colors, light);
       }
@@ -66,7 +64,7 @@
     }
   }
   .scroll-content {
-    overflow: hidden;
+    overflow-y: scroll;
     background: color($colors, light) !important;
   }
   .item-md {
@@ -83,5 +81,10 @@
   border: 5px solid #fff;
   position: absolute;
   width: 100%;
-  margin-top: -90%;
+  margin-top: -70%;
+}
+
+.toolbar-background, .toolbar-background-ios, .toolbar-background-md{
+  border-style: none !important;
+  background: transparent !important;
 }

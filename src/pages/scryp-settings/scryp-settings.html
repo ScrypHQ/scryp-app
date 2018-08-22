@@ -3,25 +3,25 @@
   <div class="menu-close-button">
     <ion-icon ios="ios-close" md="md-close" (click)="closeMenu()"></ion-icon>
   </div>
-  <div class="scryp-menu-content">
+  <div class="scryp-menu-content" style="margin-top: 5%">
     <img src="assets/imgs/scryp-images/SettingsGear.png" alt="your image">
     <p class="label-text">Settings</p>
   </div>
   <div class="block-of-button" text-center>
-    <button ion-button block class="block-of-button friends">Faq</button>
-    <span class="label-text">Push notifications</span>
+    <button ion-button block class="block-of-button friends label-text">Faq</button>
+    <span class="label-sub-text">push notifications</span>
     <ion-toolbar no-border-top no-border-bottom>
       <ion-segment [(ngModel)]="pushNotication" color="danger">
         <ion-segment-button value="true">
-          on
+          ON
         </ion-segment-button>
         <ion-segment-button value="false" checked>
-          Off
+          OFF
         </ion-segment-button>
       </ion-segment>
     </ion-toolbar>
-    <button ion-button color="secondary" outline class="block-of-button" block>Support</button>
-    <span class="label-text">Connect With Scryp</span>
+    <button ion-button color="secondary" outline class="block-of-button label-text lunatix-font" block>SUPPORT</button>
+    <span class="label-sub-text">Connect With Scryp</span>
     <ion-row class="label-content-text">
       <ion-col col-4>
         <img src="assets/imgs/scryp-images/Artwork 50.png" alt="your image">

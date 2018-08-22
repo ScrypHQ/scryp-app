@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
-import { ScrypOffersPage } from '../scryp-offers/scryp-offers';
 import { Web3Service } from '../../service/web3.service';
 import { StorageService } from '../../service/storage.service';
 import { RecoverPage } from '../recover/recover';
+import { ScrypWalletPage } from '../scryp-wallet/scryp-wallet';
 
 @Component({
   selector: 'page-user',
@@ -17,9 +17,9 @@ export class LoginPage implements OnInit {
 
   async ngOnInit() {
     const account = await this.storage.getAccount();
-    // if (account && account.address) {
-    //   this.goToWallet()
-    // }
+    if (account && account.address) {
+      this.goToWallet()
+    }
   }
 
   async onSignup() {
@@ -48,6 +48,6 @@ export class LoginPage implements OnInit {
   }
 
   goToWallet() {
-    this.navCtrl.setRoot(ScrypOffersPage)
+    this.navCtrl.setRoot(ScrypWalletPage);
   }
 }

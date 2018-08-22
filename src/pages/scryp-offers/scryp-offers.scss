@@ -6,4 +6,10 @@ page-scryp-offers {
   .settings-button-icon {
     right: -20px;
   }
+
+  .offers {
+    color: color($colors, light);
+    padding-left: 7%;
+    padding-right: 5%;
+  }
 }

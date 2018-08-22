@@ -19,7 +19,12 @@ import {ScrypFriendsPage} from "../scryp-friends/scryp-friends";
 })
 export class ScrypMenuPage {
 
+  mapPageObject: any;
+  callback: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.mapPageObject = this.navParams.get('pageObject');
+    this.callback = this.navParams.get('callback');
   }
 
   ionViewDidLoad() {
@@ -27,7 +32,7 @@ export class ScrypMenuPage {
   }
 
   closeMenu() {
-    this.navCtrl.pop()
+    this.callback(this.mapPageObject).then(()=>{ this.navCtrl.pop() });
   }
 
   goToWallet() {
@@ -43,7 +48,7 @@ export class ScrypMenuPage {
   }
 
   goToFriend() {
-    this.navCtrl.setRoot(ScrypFriendsPage)
+    this.navCtrl.push(ScrypFriendsPage)
   }
 
 }
