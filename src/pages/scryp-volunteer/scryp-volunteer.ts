@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {ScrypStorePage} from "../scryp-store/scryp-store";
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import {ScrypVolunteerLocationPage} from "../scryp-volunteer-location/scryp-volunteer-location";
 import {ScrypSettingsPage} from "../scryp-settings/scryp-settings";
 import {ScrypOffersPage} from "../scryp-offers/scryp-offers";
@@ -8,6 +7,7 @@ import {ScrypMenuPage} from "../scryp-menu/scryp-menu";
 import { VolunteerWorkService } from '../../service/volunteer-work.service';
 import * as L from 'leaflet';
 import '../../../node_modules/leaflet-plugins/layer/tile/Bing.js';
+import { Web3Service } from '../../service/web3.service';
 
 /**
  * Generated class for the ScrypVolunteerPage page.
@@ -25,11 +25,13 @@ export class ScrypVolunteerPage {
   map: any;
   BING_KEY = 'At2CX0GyCF3uTS87fnCP_ueLztJa_FruD4mq9iS4peRAb5eVNWOrxyIz7p3kZJtC';
   volunteers: any;
+  walletBalance: any;
   public volunteerIcon: any = new L.icon({
     iconUrl: 'assets/imgs/scryp-images/volunteer_marker.png',
     iconAnchor: [10, 10]
   });
-  constructor(public navCtrl: NavController, public navParams: NavParams, private volunteerService: VolunteerWorkService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private volunteerService: VolunteerWorkService, private loadingCtrl: LoadingController,
+    private web3Service: Web3Service) {
   }
 
   async ionViewDidLoad() {
@@ -43,6 +45,7 @@ export class ScrypVolunteerPage {
     const bingLayer = new L.BingLayer(this.BING_KEY, { type: "Road", maxZoom: 22, maxNativeZoom: 19 });
     this.map.addLayer(bingLayer);
     this.getVolunteerData();
+    await this.getBalance();
   }
 
   goToMenu() {
@@ -89,9 +92,20 @@ export class ScrypVolunteerPage {
   }
 
   mapCallback(mapPageObject) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       this.map = mapPageObject.map;
+      mapPageObject.getBalance();
       resolve();
     });
+  }
+
+  async getBalance() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+    this.walletBalance = await this.web3Service.getBalance();
+    loading.dismiss();
   }
 }

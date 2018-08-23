@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { Web3Service } from '../../service/web3.service';
 import { StorageService } from '../../service/storage.service';
 import { RecoverPage } from '../recover/recover';
@@ -13,18 +13,30 @@ export class LoginPage implements OnInit {
   privateKey:any;
   submitted = false;
 
-  constructor(public navCtrl: NavController, public web3: Web3Service, public storage: StorageService, public alert: AlertController) { }
+  constructor(public navCtrl: NavController, public web3: Web3Service, public storage: StorageService, public alert: AlertController, public loadingCtrl: LoadingController) { }
 
   async ngOnInit() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
     const account = await this.storage.getAccount();
+    loading.dismiss();
     if (account && account.address) {
       this.goToWallet()
     }
   }
 
   async onSignup() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
     const mnemonic = await this.web3.createAccount();
     const account = await this.storage.getAccount();
+    loading.dismiss();
     if (account && account.address) {
       this.goToRecover(mnemonic);
     } else {

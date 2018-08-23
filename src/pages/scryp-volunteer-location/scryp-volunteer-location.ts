@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { BarcodeScanner } from '../../../node_modules/@ionic-native/barcode-scanner';
+import { Web3Service } from '../../service/web3.service';
 
 /**
  * Generated class for the ScrypVolunteerLocationPage page.
@@ -20,7 +21,8 @@ export class ScrypVolunteerLocationPage {
   callback: any;
   volunteerSite: any;
   scrypActions = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private scanner: BarcodeScanner) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private scanner: BarcodeScanner, private loadingCtrl: LoadingController,
+    private web3Service: Web3Service) {
     this.mapPageObject = this.navParams.get('pageObject');
     this.callback = this.navParams.get('callback');
     this.volunteerSite = this.navParams.get('volunteerSite');
@@ -41,8 +43,23 @@ export class ScrypVolunteerLocationPage {
 
   async addScryp() {
     const info = await this.scanner.scan();
+    const values = info.text.split(';');
+    if (values[0] != 'Earn') {
+      alert('Invalid code scanned');
+      return;
+    }
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    
+    loading.present();
     // scryp add logic goes here
-    console.log(info);
-    alert(info.text);
+    const result = await this.web3Service.earnScryp(values[1]);
+    loading.dismiss();
+    if (result) {
+      alert('Scryp Earned');
+    } else {
+      alert('Failed');
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { BarcodeScanner } from '../../../node_modules/@ionic-native/barcode-scanner';
+import { Web3Service } from '../../service/web3.service';
 
 /**
  * Generated class for the ScrypStorePage page.
@@ -20,7 +21,8 @@ export class ScrypStorePage {
   callback: any;
   offer: any;
   scrypActions = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private scanner: BarcodeScanner) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private scanner: BarcodeScanner, private loadingCtrl: LoadingController,
+    private web3Service: Web3Service) {
     this.mapPageObject = this.navParams.get('pageObject');
     this.callback = this.navParams.get('callback');
     this.offer = this.navParams.get('offer');
@@ -40,8 +42,23 @@ export class ScrypStorePage {
 
   async spendScryp() {
     const info = await this.scanner.scan();
+    const values = info.text.split(';');
+    if (values[0] != 'Spend') {
+      alert('Invalid code scanned');
+      return;
+    }
     // scryp spend logic goes here
-    console.log(info);
-    alert(info.text);
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+    const result = await this.web3Service.burnScryp(values[1]);
+    loading.dismiss();
+    if (result) {
+      alert('Scryp Spent');
+    } else {
+      alert('Failed');
+    }
   }
 }
