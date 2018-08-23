@@ -10,8 +10,6 @@ import { ScrypWalletPage } from '../scryp-wallet/scryp-wallet';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
-@IonicPage()
 @Component({
   selector: 'page-recover',
   templateUrl: 'recover.html',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { BarcodeScanner } from '../../../node_modules/@ionic-native/barcode-scanner';
 import { Web3Service } from '../../service/web3.service';
 
@@ -10,7 +10,6 @@ import { Web3Service } from '../../service/web3.service';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-scryp-store',
   templateUrl: 'scryp-store.html',
@@ -21,7 +20,11 @@ export class ScrypStorePage {
   callback: any;
   offer: any;
   scrypActions = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private scanner: BarcodeScanner, private loadingCtrl: LoadingController,
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private scanner: BarcodeScanner,
+    private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController,
     private web3Service: Web3Service) {
     this.mapPageObject = this.navParams.get('pageObject');
     this.callback = this.navParams.get('callback');
@@ -56,9 +59,19 @@ export class ScrypStorePage {
     const result = await this.web3Service.burnScryp(values[1]);
     loading.dismiss();
     if (result) {
-      alert('Scryp Spent');
+      let alert = this.alertCtrl.create({
+        title: 'Transaction Successful',
+        subTitle: 'Paid '+ values[1] + ' Scryp.',
+        buttons: ['Dismiss']
+      });
+      alert.present();
     } else {
-      alert('Failed');
+      let alert = this.alertCtrl.create({
+        title: 'Transaction Failed',
+        subTitle: 'Could not complete transaction.',
+        buttons: ['Dismiss']
+      });
+      alert.present();
     }
   }
 }

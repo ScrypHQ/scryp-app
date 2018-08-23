@@ -16,7 +16,6 @@ import { Web3Service } from '../../service/web3.service';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-scryp-offers',
   templateUrl: 'scryp-offers.html',
@@ -45,7 +44,7 @@ export class ScrypOffersPage {
     this.map = new L.Map('offer-map', { zoomControl: false, center: center, zoom: 14 });
     const bingLayer = new L.BingLayer(this.BING_KEY, { type: "Road", maxZoom: 22, maxNativeZoom: 19 });
     this.map.addLayer(bingLayer);
-    this.getOffersData();
+    await this.getOffersData();
     await this.getBalance();
   }
 
@@ -75,15 +74,17 @@ export class ScrypOffersPage {
     });
   }
 
-  filterItems(event) {
-    this.offers = this.offersService.GetOffersData();
+  async filterItems(event) {
+    if (!event.data) {
+      this.offers = await this.offersService.GetOffersData();
+    }
     this.offers = this.offers.filter(item => {
       return item.title.toLowerCase().includes(event.target.value.toLowerCase());
     })
   }
 
-  getOffersData() {
-    this.offers = this.offersService.GetOffersData();
+  async getOffersData() {
+    this.offers = await this.offersService.GetOffersData();
     this.offers.forEach(o => {
       var marker = new L.Marker(new L.LatLng(o.location.latitude, o.location.longitude), { icon: this.offersIcon, alt: o.id });
       marker.options.alt = o.id;

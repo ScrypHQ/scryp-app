@@ -9,22 +9,22 @@ import { StorageService } from "./storage.service";
 import { SCRYP_ABI } from '../scryp/scryp.abi';
 
 @Injectable()
-export class Web3Service{
+export class Web3Service {
   web3: any;
   provider: any;
   contract: any;
   masterWeb3: any;
   masterAccount: any;
   masterContract: any;
-  masterProvider:any;
+  masterProvider: any;
   private contractAddress = '0xEdcEf355b7958b18E5F5b23667380A9B20739428';
-  constructor(public storage:StorageService) {
+  constructor(public storage: StorageService) {
     Web3.providers.HttpProvider.prototype.sendAsync = Web3.providers.HttpProvider.prototype.send;
     this.instantiateMasterWeb3();
     this.ifAccountExists();
   }
 
-  private async ifAccountExists(){
+  private async ifAccountExists() {
     const account = await this.storage.getAccount();
     if (!account || !account.address) {
       return;
@@ -32,7 +32,7 @@ export class Web3Service{
     this.checkAndInstantiateWeb3(account.phrase);
   }
 
-  private checkAndInstantiateWeb3 = async(phrase) => {
+  private checkAndInstantiateWeb3 = async (phrase) => {
     this.web3 = new Web3(
       new HDWalletProvider(
         phrase,
@@ -60,11 +60,11 @@ export class Web3Service{
     await this.storage.setAccount(account);
     await this.checkAndInstantiateWeb3(mnemonic);
     // send ether
-    await this.masterWeb3.eth.sendTransaction({to:account.address, from:this.masterAccount, value: this.masterWeb3.utils.toWei("0.01", "ether")});
+    await this.masterWeb3.eth.sendTransaction({ to: account.address, from: this.masterAccount, value: this.masterWeb3.utils.toWei("0.01", "ether") });
     return mnemonic;
   }
 
-  public restoreAccount(recoveryPassphrase: string){
+  public restoreAccount(recoveryPassphrase: string) {
     if (!bip39.validateMnemonic(recoveryPassphrase)) {
       return null;
     }
@@ -84,29 +84,29 @@ export class Web3Service{
     return balance;
   }
 
-  public async earnScryp(amount): Promise<boolean>{
+  public async earnScryp(amount): Promise<boolean> {
     try {
       // allow the transfer
       const account = await this.storage.getAccount();
-      const allowed = await this.masterContract.methods.approve(account.address, amount).send({ from: this.masterAccount, gas:'1000000'});
+      const allowed = await this.masterContract.methods.approve(account.address, amount).send({ from: this.masterAccount, gas: '1000000' });
 
       //transfer the coin after that
-      if(allowed) {
-        const result = await this.contract.methods.transferFrom(this.masterAccount, account.address, amount).send({from: account.address, gas:'1000000'});
+      if (allowed) {
+        await this.contract.methods.transferFrom(this.masterAccount, account.address, amount).send({ from: account.address, gas: '1000000' });
       }
       return true;
-    } catch(e) {
-      console.log(e)
-      return false
+    } catch (e) {
+      console.log(e);
+      return false;
     }
   }
 
-  public async burnScryp(amount) : Promise<boolean> {
+  public async burnScryp(amount): Promise<boolean> {
     try {
       const account = await this.storage.getAccount();
-      await this.contract.methods.burn(amount).send({from: account.address, gas:'1000000'});
+      await this.contract.methods.burn(amount).send({ from: account.address, gas: '1000000' });
       return true;
-    } catch(e) {
+    } catch (e) {
       console.log(e)
       return false;
     }

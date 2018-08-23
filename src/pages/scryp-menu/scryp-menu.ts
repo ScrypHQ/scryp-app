@@ -11,8 +11,6 @@ import {ScrypFriendsPage} from "../scryp-friends/scryp-friends";
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
-@IonicPage()
 @Component({
   selector: 'page-scryp-menu',
   templateUrl: 'scryp-menu.html',

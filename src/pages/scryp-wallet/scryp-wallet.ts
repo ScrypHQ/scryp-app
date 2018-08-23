@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { ScrypVolunteerPage } from "../scryp-volunteer/scryp-volunteer";
 import { ScrypStorePage } from "../scryp-store/scryp-store";
 import { ScrypSettingsPage } from "../scryp-settings/scryp-settings";
@@ -7,7 +7,7 @@ import { ScrypMenuPage } from "../scryp-menu/scryp-menu";
 import { ScrypVolunteerLocationPage } from "../scryp-volunteer-location/scryp-volunteer-location";
 import * as L from 'leaflet';
 import '../../../node_modules/leaflet-plugins/layer/tile/Bing.js';
-import { Geolocation } from '@ionic-native/geolocation';
+// import { Geolocation } from '@ionic-native/geolocation';
 import { VolunteerWorkService } from '../../service/volunteer-work.service';
 import { OffersService } from '../../service/offers.service';
 import { Web3Service } from '../../service/web3.service';
@@ -20,7 +20,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-scryp-wallet',
   templateUrl: 'scryp-wallet.html',
@@ -41,7 +40,8 @@ export class ScrypWalletPage {
     // private geolocation: Geolocation,
     private web3Service: Web3Service,
     private volunteerService: VolunteerWorkService, private offersService: OffersService,
-    private scanner: BarcodeScanner, private loadingCtrl: LoadingController) {
+    private scanner: BarcodeScanner, private loadingCtrl: LoadingController,
+    private alertCtrl: AlertController) {
   }
 
   async ionViewDidLoad() {
@@ -54,8 +54,8 @@ export class ScrypWalletPage {
     this.map = new L.Map('wallet-map', { zoomControl: false, center: center, zoom: 14 });
     const bingLayer = new L.BingLayer(this.BING_KEY, { type: "Road", maxZoom: 22, maxNativeZoom: 19 });
     this.map.addLayer(bingLayer);
-    this.getVolunteerData();
-    this.getOffersData();
+    await this.getVolunteerData();
+    await this.getOffersData();
     this.getBalance();
   }
 
@@ -94,8 +94,8 @@ export class ScrypWalletPage {
     });
   }
 
-  getVolunteerData() {
-    const volunteers = this.volunteerService.GetVolunteerData();
+  async getVolunteerData() {
+    const volunteers = await this.volunteerService.GetVolunteerData();
     volunteers.forEach(v => {
       var marker = new L.Marker(new L.LatLng(v.location.latitude, v.location.longitude), { icon: this.volunteerIcon, alt: v.id });
       marker.options.alt = v.id;
@@ -104,8 +104,8 @@ export class ScrypWalletPage {
     });
   }
 
-  getOffersData() {
-    const offers = this.offersService.GetOffersData();
+  async getOffersData() {
+    const offers = await this.offersService.GetOffersData();
     offers.forEach(o => {
       var marker = new L.Marker(new L.LatLng(o.location.latitude, o.location.longitude), { icon: this.offersIcon, alt: o.id });
       marker.options.alt = o.id;
@@ -140,9 +140,19 @@ export class ScrypWalletPage {
     loading.dismiss();
     if (result) {
       await this.getBalance();
-      alert('Scryp Earned');
+      let alert = this.alertCtrl.create({
+        title: 'Transaction Successful',
+        subTitle: 'Added '+ values[1] + ' Scryp to your wallet.',
+        buttons: ['Dismiss']
+      });
+      alert.present();
     } else {
-      alert('Failed');
+      let alert = this.alertCtrl.create({
+        title: 'Transaction Failed',
+        subTitle: 'Could not complete transaction.',
+        buttons: ['Dismiss']
+      });
+      alert.present();
     }
   }
 
@@ -164,9 +174,19 @@ export class ScrypWalletPage {
     loading.dismiss();
     if (result) {
       await this.getBalance();
-      alert('Scryp Spent');
+      let alert = this.alertCtrl.create({
+        title: 'Transaction Successful',
+        subTitle: 'Paid '+ values[1] + ' Scryp.',
+        buttons: ['Dismiss']
+      });
+      alert.present();
     } else {
-      alert('Failed');
+      let alert = this.alertCtrl.create({
+        title: 'Transaction Failed',
+        subTitle: 'Could not complete transaction.',
+        buttons: ['Dismiss']
+      });
+      alert.present();
     }
   }
 

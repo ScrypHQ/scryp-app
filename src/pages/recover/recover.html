@@ -8,10 +8,10 @@
     </div>
   </ion-row>
   <div class="center-div" *ngIf="isLoggedIn" padding>
-    <button class="button-scryp" ion-button padding color="secondary" outline ngxClipboard [cbContent]="mnemonic">Copy to clipboard</button>
-    <button class="button-scryp" ion-button padding color="secondary" outline (click)="goToWallet()">Go To Wallet</button>
+    <button class="button-scryp" ion-button padding color="secondary" outline ngxClipboard [cbContent]="mnemonic">COPY TO CLIPBOARD</button>
+    <button class="button-scryp" ion-button padding color="secondary" outline (click)="goToWallet()">GO TO WALLET</button>
   </div>
   <div class="center-div" responsive-sm *ngIf="!isLoggedIn" padding>
-    <button class="button-scryp" ion-button color="secondary" outline (click)="recover()" style="margin: auto;">Recover</button>
+    <button class="button-scryp" ion-button color="secondary" outline (click)="recover()" style="margin: auto;">RECOVER</button>
   </div>
 </ion-content>

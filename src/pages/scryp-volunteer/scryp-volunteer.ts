@@ -15,8 +15,6 @@ import { Web3Service } from '../../service/web3.service';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
-@IonicPage()
 @Component({
   selector: 'page-scryp-volunteer',
   templateUrl: 'scryp-volunteer.html',
@@ -44,7 +42,7 @@ export class ScrypVolunteerPage {
     this.map = new L.Map('volunteer-map', { zoomControl: false, center: center, zoom: 14 });
     const bingLayer = new L.BingLayer(this.BING_KEY, { type: "Road", maxZoom: 22, maxNativeZoom: 19 });
     this.map.addLayer(bingLayer);
-    this.getVolunteerData();
+    await this.getVolunteerData();
     await this.getBalance();
   }
 
@@ -74,15 +72,17 @@ export class ScrypVolunteerPage {
     });
   }
 
-  filterItems(event) {
-    this.volunteers = this.volunteerService.GetVolunteerData();
+  async filterItems(event) {
+    if (!event.data) {
+      this.volunteers = await this.volunteerService.GetVolunteerData();
+    }
     this.volunteers = this.volunteers.filter(item => {
       return item.title.toLowerCase().includes(event.target.value.toLowerCase());
     })
   }
 
-  getVolunteerData() {
-    this.volunteers = this.volunteerService.GetVolunteerData();
+  async getVolunteerData() {
+    this.volunteers = await this.volunteerService.GetVolunteerData();
     this.volunteers.forEach(v => {
       var marker = new L.Marker(new L.LatLng(v.location.latitude, v.location.longitude), { icon: this.volunteerIcon, alt: v.id });
       marker.options.alt = v.id;

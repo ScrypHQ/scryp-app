@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { BarcodeScanner } from '../../../node_modules/@ionic-native/barcode-scanner';
 import { Web3Service } from '../../service/web3.service';
 
@@ -10,7 +10,6 @@ import { Web3Service } from '../../service/web3.service';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-scryp-volunteer-location',
   templateUrl: 'scryp-volunteer-location.html',
@@ -21,8 +20,12 @@ export class ScrypVolunteerLocationPage {
   callback: any;
   volunteerSite: any;
   scrypActions = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private scanner: BarcodeScanner, private loadingCtrl: LoadingController,
-    private web3Service: Web3Service) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private scanner: BarcodeScanner,
+    private loadingCtrl: LoadingController,
+    private web3Service: Web3Service,
+    private alertCtrl: AlertController) {
     this.mapPageObject = this.navParams.get('pageObject');
     this.callback = this.navParams.get('callback');
     this.volunteerSite = this.navParams.get('volunteerSite');
@@ -57,9 +60,19 @@ export class ScrypVolunteerLocationPage {
     const result = await this.web3Service.earnScryp(values[1]);
     loading.dismiss();
     if (result) {
-      alert('Scryp Earned');
+      let alert = this.alertCtrl.create({
+        title: 'Transaction Successful',
+        subTitle: 'Added '+ values[1] + ' Scryp to your wallet.',
+        buttons: ['Dismiss']
+      });
+      alert.present();
     } else {
-      alert('Failed');
+      let alert = this.alertCtrl.create({
+        title: 'Transaction Failed',
+        subTitle: 'Could not complete transaction.',
+        buttons: ['Dismiss']
+      });
+      alert.present();
     }
   }
 }
