@@ -13,23 +13,23 @@
       </ion-col>
     </ion-row>
     <ion-row class="header-label balance">
-      <img src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images" width="13%">{{walletData}}</ion-row>
+      <img src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images" width="13%">{{walletBalance}}</ion-row>
     <ion-row class="label-content-text">
-      <ion-col col-7>
+      <ion-col col-9>
         <p class="label-text">Total Scryp Earned
         </p>
       </ion-col>
-      <ion-col col-5>
-        <p style="display:inline;float: right" class="balance-label">xxxx.xx</p>
+      <ion-col col-3>
+        <p style="display:inline;float: right" class="balance-label">{{earned}}</p>
         <img src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images balance-label" style="width: 34px; margin-top: 9px;float: right;">
       </ion-col>
     </ion-row>
     <ion-row class="label-content-text">
-      <ion-col col-7>
+      <ion-col col-9>
         <p class="label-text">Total USD Saved</p>
       </ion-col>
-      <ion-col col-5>
-        <p class="balance-label" style="float: right">$xxxx.xx</p>
+      <ion-col col-3>
+        <p class="balance-label" style="float: right">${{saved}}</p>
       </ion-col>
     </ion-row>
     <ion-row padding>

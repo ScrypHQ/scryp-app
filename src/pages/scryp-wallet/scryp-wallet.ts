@@ -25,7 +25,9 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   templateUrl: 'scryp-wallet.html',
 })
 export class ScrypWalletPage {
-  walletData: number;
+  walletBalance: number;
+  earned: number;
+  saved: number;
   map: any;
   BING_KEY = 'At2CX0GyCF3uTS87fnCP_ueLztJa_FruD4mq9iS4peRAb5eVNWOrxyIz7p3kZJtC';
   public volunteerIcon: any = new L.icon({
@@ -57,6 +59,8 @@ export class ScrypWalletPage {
     await this.getVolunteerData();
     await this.getOffersData();
     this.getBalance();
+    this.getScrypEarned();
+    this.getUSDSaved();
   }
 
   goToMenu() {
@@ -118,6 +122,8 @@ export class ScrypWalletPage {
     return new Promise((resolve, reject) => {
       this.map = mapPageObject.map;
       mapPageObject.getBalance();
+      mapPageObject.getScrypEarned();
+      mapPageObject.getUSDSaved();
       resolve();
     });
   }
@@ -139,7 +145,9 @@ export class ScrypWalletPage {
     const result = await this.web3Service.earnScryp(values[1]);
     loading.dismiss();
     if (result) {
-      await this.getBalance();
+      this.getBalance();
+      this.getScrypEarned();
+      this.getUSDSaved();
       let alert = this.alertCtrl.create({
         title: 'Transaction Successful',
         subTitle: 'Added '+ values[1] + ' Scryp to your wallet.',
@@ -173,7 +181,9 @@ export class ScrypWalletPage {
     const result = await this.web3Service.burnScryp(values[1]);
     loading.dismiss();
     if (result) {
-      await this.getBalance();
+      this.getBalance();
+      this.getUSDSaved();
+      this.getScrypEarned();
       let alert = this.alertCtrl.create({
         title: 'Transaction Successful',
         subTitle: 'Paid '+ values[1] + ' Scryp.',
@@ -196,7 +206,29 @@ export class ScrypWalletPage {
     });
   
     loading.present();
-    this.walletData = await this.web3Service.getBalance();
+    this.walletBalance = await this.web3Service.getBalance();
     loading.dismiss();
   }
+
+  async getScrypEarned() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+    this.earned = await this.web3Service.getScrypEarned();
+    loading.dismiss();
+  }
+
+  async getUSDSaved() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+    this.saved = await this.web3Service.getUSDSaved();
+    loading.dismiss();
+  }
+
+
 }

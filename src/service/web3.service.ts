@@ -17,7 +17,7 @@ export class Web3Service {
   masterAccount: any;
   masterContract: any;
   masterProvider: any;
-  private contractAddress = '0xEdcEf355b7958b18E5F5b23667380A9B20739428';
+  private contractAddress = '0x39926f0958024312B27A86fcdD8073996622BA0b';
   constructor(public storage: StorageService) {
     Web3.providers.HttpProvider.prototype.sendAsync = Web3.providers.HttpProvider.prototype.send;
     this.instantiateMasterWeb3();
@@ -81,6 +81,20 @@ export class Web3Service {
     // need to access sc for this info
     const account = await this.storage.getAccount();
     const balance = await this.contract.methods.balanceOf(account.address).call();
+    return balance;
+  }
+
+  public async getScrypEarned(): Promise<number> {
+    // need to access sc for this info
+    const account = await this.storage.getAccount();
+    const balance = await this.contract.methods.scrypEarned(account.address).call();
+    return balance;
+  }
+
+  public async getUSDSaved(): Promise<number> {
+    // need to access sc for this info
+    const account = await this.storage.getAccount();
+    const balance = await this.contract.methods.usdSaved(account.address).call();
     return balance;
   }
 
