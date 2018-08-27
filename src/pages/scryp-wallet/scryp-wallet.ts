@@ -12,6 +12,7 @@ import { VolunteerWorkService } from '../../service/volunteer-work.service';
 import { OffersService } from '../../service/offers.service';
 import { Web3Service } from '../../service/web3.service';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { ScrypFriendsPage } from '../scryp-friends/scryp-friends';
 
 /**
  * Generated class for the ScrypWalletPage page.
@@ -81,6 +82,9 @@ export class ScrypWalletPage {
     this.navCtrl.setRoot(ScrypVolunteerPage);
   }
 
+  goToFriends() {
+    this.navCtrl.push(ScrypFriendsPage);
+  }
 
   goToStore(offer) {
     this.navCtrl.push(ScrypStorePage, {

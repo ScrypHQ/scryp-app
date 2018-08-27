@@ -23,10 +23,10 @@
       <ion-grid>
         <ion-row>
           <ion-col col-4 style="text-align: -webkit-center">
-            <button *ngIf="scrypActions" ion-fab color="secondary">Share</button>
+            <button ion-fab color="secondary" (click)="goToFriends()">Share</button>
           </ion-col>
           <ion-col col-4 style="text-align: -webkit-center">
-            <button *ngIf="scrypActions" ion-fab color="dark" (click)="addScryp()">Earn</button>
+            <button ion-fab color="dark" (click)="addScryp()">Earn</button>
           </ion-col>
           <ion-col col-4 style="text-align: -webkit-center">
             <img (click)="toggleScrypActions()" ion-fab src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images">

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { BarcodeScanner } from '../../../node_modules/@ionic-native/barcode-scanner';
 import { Web3Service } from '../../service/web3.service';
+import { ScrypFriendsPage } from '../scryp-friends/scryp-friends';
 
 /**
  * Generated class for the ScrypVolunteerLocationPage page.
@@ -34,6 +35,10 @@ export class ScrypVolunteerLocationPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScrypVolunteerLocationPage');
 
+  }
+
+  goToFriends() {
+    this.navCtrl.push(ScrypFriendsPage);
   }
 
   closeMenu() {
