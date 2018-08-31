@@ -4,7 +4,8 @@
     .label-text {
       color: color($colors, dark);
       float: none;
-      font-size: 23px;
+      font-size: 3vh;
+      font-family: 'Source Code Regular';
       text-align: center;
       span {
         color: color($colors, secondary);
@@ -25,7 +26,7 @@
     font-size: 30px;
     &.text {
       color: color($colors, primary);
-      font-size: 20px;
+      font-size: 2vh;
     }
     &.balance {
       color: color($colors, light);
@@ -88,3 +89,10 @@
   border-style: none !important;
   background: transparent !important;
 }
+
+.scryp-fab-buttons {
+  padding: 4vh;
+  font-size: 2.75vh;
+  font-family: 'Lunatix Regular';
+}
+

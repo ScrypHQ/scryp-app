@@ -1,7 +1,6 @@
 page-scryp-settings {
   .scryp-menu-content {
     margin: auto;
-    width: 30%;
     text-align: center;
   }
   .block-of-button {
@@ -12,6 +11,7 @@ page-scryp-settings {
       color: color($colors, light);
       padding-left: 10%;
       padding-right: 10%;
+      font-size: 6vh;
     }
     &.wallet{
       background: color($colors, dark);
@@ -27,12 +27,13 @@ page-scryp-settings {
     }
   }
   .label-text {
+    font-family: 'Source Code Regular';
     color: color($colors, light);
-    font-size: 26px;
+    font-size: 5vh;
   }
 
   .label-sub-text {
-    font-family: monospace;
+    font-family: 'Source Code Regular';
     color: color($colors, secondary);
     float: left;
     font-size: 26px;
@@ -55,7 +56,7 @@ page-scryp-settings {
   .toolbar-md, .toolbar-ios {
     padding-left: 8%;
     padding-right: 8%;
-    font-family: 'Lunatix Light';
+    font-family: 'Lunatix Regular';
   }
   .toolbar-ios {
     margin: 12% 0%;
@@ -74,6 +75,6 @@ page-scryp-settings {
   }
 
   .lunatix-font {
-    font-family: 'Lunatix Light';
+    font-family: 'Lunatix Regular';
   }
 }

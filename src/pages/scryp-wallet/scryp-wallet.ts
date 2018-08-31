@@ -59,9 +59,15 @@ export class ScrypWalletPage {
     this.map.addLayer(bingLayer);
     await this.getVolunteerData();
     await this.getOffersData();
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
     this.getBalance();
     this.getScrypEarned();
     this.getUSDSaved();
+    loading.dismiss();
   }
 
   goToMenu() {
@@ -142,16 +148,22 @@ export class ScrypWalletPage {
     }
     // scryp add logic goes here
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Talking to the blockchain...'
     });
   
     loading.present();
     const result = await this.web3Service.earnScryp(values[1]);
     loading.dismiss();
     if (result) {
-      this.getBalance();
-      this.getScrypEarned();
-      this.getUSDSaved();
+      let loadingSuccess = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+    
+      loadingSuccess.present();
+      await this.getBalance();
+      await this.getUSDSaved();
+      await this.getScrypEarned();
+      loadingSuccess.dismiss();
       let alert = this.alertCtrl.create({
         title: 'Transaction Successful',
         subTitle: 'Added '+ values[1] + ' Scryp to your wallet.',
@@ -178,16 +190,22 @@ export class ScrypWalletPage {
     }
     // scryp spend logic goes here
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Talking to the blockchain...'
     });
   
     loading.present();
     const result = await this.web3Service.burnScryp(values[1]);
     loading.dismiss();
     if (result) {
-      this.getBalance();
-      this.getUSDSaved();
-      this.getScrypEarned();
+      let loadingSuccess = this.loadingCtrl.create({
+        content: 'Please wait...'
+      });
+    
+      loadingSuccess.present();
+      await this.getBalance();
+      await this.getUSDSaved();
+      await this.getScrypEarned();
+      loadingSuccess.dismiss();
       let alert = this.alertCtrl.create({
         title: 'Transaction Successful',
         subTitle: 'Paid '+ values[1] + ' Scryp.',
@@ -205,34 +223,14 @@ export class ScrypWalletPage {
   }
 
   async getBalance() {
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-  
-    loading.present();
     this.walletBalance = await this.web3Service.getBalance();
-    loading.dismiss();
   }
 
   async getScrypEarned() {
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-  
-    loading.present();
     this.earned = await this.web3Service.getScrypEarned();
-    loading.dismiss();
   }
 
   async getUSDSaved() {
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-  
-    loading.present();
     this.saved = await this.web3Service.getUSDSaved();
-    loading.dismiss();
   }
-
-
 }

@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
 
   async ngOnInit() {
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Checking account status. Please wait...'
     });
   
     loading.present();
@@ -30,7 +30,7 @@ export class LoginPage implements OnInit {
 
   async onSignup() {
     let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Talking to the blockchain...'
     });
   
     loading.present();

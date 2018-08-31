@@ -1,7 +1,7 @@
 <ion-content padding>
   <div id="offer-map" style="width:100%; height:50%;"></div>
   <p class="map-overlay">Offers</p>
-  <img class="map-overlay" style="height: 55px; right: 0;" (click)="goToMenu()" src ="assets/imgs/scryp-images/LogoWithRing.png">
+  <img class="map-overlay" style="height: 55px; right: 0;" (click)="goToMenu()" src="assets/imgs/scryp-images/LogoWithRing.png">
   <ion-grid>
     <ion-row>
       <ion-col col-8 class="search-bar-align">
@@ -14,13 +14,13 @@
     </ion-row>
     <ion-row class="header-label text">Balance</ion-row>
     <ion-row class="header-label balance">
-      <img src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images" width="18%">{{walletBalance}}</ion-row>
-      <ion-row *ngFor="let o of offers" class="label-content-text">
-          <ion-col col-12>
-            <p (click)="goToStore(o)" class="label-text offers">
-                <span>-</span>{{o.title}} till {{o.validity | date : short }}</p>
-          </ion-col>
-        </ion-row>
+      <img src="assets/imgs/scryp-images/scryp-coin.png" alt="your image" class="scryp-images">{{walletBalance}}</ion-row>
+    <ion-row *ngFor="let o of offers" class="label-content-text">
+      <ion-col col-12>
+        <p (click)="goToStore(o)" class="label-text offers">
+          <span>-</span>{{o.title}} till {{o.validity | date : short }}</p>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>
 <ion-footer>

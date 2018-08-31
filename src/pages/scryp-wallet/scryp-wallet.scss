@@ -1,14 +1,16 @@
 page-scryp-wallet {
   .label-content-text{
-    font-size: 16px;
-    height: 40px;
+    font-family: "Source Code Regular";
+    height: 6vh;
     .label-text {
       color: color($colors, secondary);
       float: right;
+      font-size: 3vh;
     }
     .balance-label {
       color: color($colors, light);
       float: left;
+      font-size: 3vh;
     }
   }
   .goto-menu-icon {
@@ -16,6 +18,19 @@ page-scryp-wallet {
       bottom: -15px !important;
   }
   .settings-button-icon {
-    right: -20px;
+    right: -12px;
+    bottom: -12px !important;
+  }
+
+  .scryp-images {
+    height: 5vh;
+    margin-top: 0.5vh;
+    margin-right: 4px;
+  }
+
+  .scryp-fab-buttons {
+    padding: 4vh;
+    font-size: 2.75vh;
+    font-family: 'Lunatix Regular';
   }
 }

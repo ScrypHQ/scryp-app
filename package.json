@@ -1,8 +1,8 @@
 {
   "name": "scryp-mobile-mvp",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "version": "0.0.3",
+  "author": "Rajesh Panda",
+  "homepage": "http://rajeshpanda.in/",
   "private": true,
   "scripts": {
     "start": "ionic-app-scripts serve",

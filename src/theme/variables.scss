@@ -122,8 +122,15 @@ $colors: (
 }
 
 @font-face {
-  font-family: 'Lunatix Light';
+  font-family: 'Lunatix Regular';
   src: url('../assets/fonts/Lunatix Light Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Source Code Regular';
+  src: url('../assets/fonts/SourceCodePro-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -157,7 +164,8 @@ $colors: (
 }
 
 .header-label {
-  font-size: 30px;
+  font-family: 'Source Code Regular';
+  font-size: 5vh;
   &.text {
     color: color($colors, secondary);
   }
@@ -173,4 +181,5 @@ $colors: (
   color: color($colors, primary);
   font-size: 20px;
   margin: 10px;
+  font-family: 'Lunatix Regular';
 }

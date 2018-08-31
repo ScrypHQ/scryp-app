@@ -4,12 +4,21 @@ page-scryp-offers {
     bottom: -15px !important;
   }
   .settings-button-icon {
-    right: -20px;
+    right: -12px;
+    bottom: -12px !important;
   }
 
   .offers {
     color: color($colors, light);
     padding-left: 7%;
     padding-right: 5%;
+    font-size: 3vh;
+    font-family: 'Source Code Regular';
+  }
+
+  .scryp-images {
+    height: 5vh;
+    margin-top: 0.5vh;
+    margin-right: 4px;
   }
 }

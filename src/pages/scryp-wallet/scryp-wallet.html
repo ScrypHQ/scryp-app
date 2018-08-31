@@ -13,15 +13,15 @@
       </ion-col>
     </ion-row>
     <ion-row class="header-label balance">
-      <img src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images" width="13%">{{walletBalance}}</ion-row>
-    <ion-row class="label-content-text">
+      <img src="assets/imgs/scryp-images/scryp-coin.png" alt="your image" class="scryp-images">{{walletBalance}}</ion-row>
+    <ion-row class="label-content-text" align-items-start>
       <ion-col col-9>
         <p class="label-text">Total Scryp Earned
         </p>
       </ion-col>
-      <ion-col col-3>
+      <ion-col col-3 align-self-start>
         <p style="display:inline;float: right" class="balance-label">{{earned}}</p>
-        <img src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images balance-label" style="width: 34px; margin-top: 9px;float: right;">
+        <img src="assets/imgs/scryp-images/scryp-coin.png" alt="your image" style="margin: 2.75vh; margin-right: 0.5vh; float: right; height: 3vh;">
       </ion-col>
     </ion-row>
     <ion-row class="label-content-text">
@@ -33,12 +33,12 @@
       </ion-col>
     </ion-row>
     <ion-row padding>
-      <ion-fab right class="fab-button-text scryp-icon">
-        <img ion-fab src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images" width="15%">
+      <ion-fab right class="fab-button-text scryp-icon" style="bottom: 10vh;">
+        <img ion-fab src="assets/imgs/scryp-images/Artwork 35.png" alt="your image" class="scryp-images" style="height: 7vh; width: 7vh;">
         <ion-fab-list side="left">
-          <button ion-fab color="dark" (click)="addScryp()">Earn</button>
-          <button ion-fab color="darkOrange" (click)="spendScryp()">Spend</button>
-          <button ion-fab color="secondary" (click)="goToFriends()">Send</button>
+          <button ion-fab class="scryp-fab-buttons" color="dark" (click)="addScryp()">Earn</button>
+          <button ion-fab class="scryp-fab-buttons" color="darkOrange" (click)="spendScryp()">Spend</button>
+          <button ion-fab class="scryp-fab-buttons" color="secondary" (click)="goToFriends()">Send</button>
         </ion-fab-list>
       </ion-fab>
     </ion-row>

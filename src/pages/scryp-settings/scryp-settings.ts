@@ -14,7 +14,7 @@ import { NavController, NavParams } from 'ionic-angular';
 export class ScrypSettingsPage {
   mapPageObject: any;
   callback: any;
-  pushNotication: true;
+  pushNotification= 'yes';
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.mapPageObject = this.navParams.get('pageObject');
     this.callback = this.navParams.get('callback');
