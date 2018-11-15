@@ -4,7 +4,7 @@
 
 bash
 # clone repo
-$ git clone https://bitbucket.org/techgrit/scryp-mobile-mvp.git
+$ git clone https://github.com/ScrypHQ/scryp-mobile.git
 
 # change directory to your app
 $ cd scryp
